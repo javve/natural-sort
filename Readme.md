@@ -20,13 +20,9 @@ var values = ['B', 'a', 'D', 'c'];
 
 values.sort(naturalSort); // ['B', 'D', 'a', 'c']
 
-naturalSort.insensitive = true;
+values.sort(naturalSort({ insensitive: true })); // ['a', 'B', 'c', 'D']
 
-values.sort(naturalSort); // ['a', 'B', 'c', 'D']
-
-naturalSort.desc = true;
-
-values.sort(naturalSort); // ['D', 'c', 'B', 'a']
+values.sort(naturalSort({ insensitive: true, desc: true })); // ['D', 'c', 'B', 'a']
 
 ```
 

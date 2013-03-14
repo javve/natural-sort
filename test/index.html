@@ -327,47 +327,49 @@
                     ],'contributed by Jonny Strömberg @javve');
             });
             test("case insensitive", function () {
-                naturalSort.insensitive = true;
-                wrapTest([
-                        'c',
-                        'B',
-                        'a',
-                        'D'
-                    ], [
-                        'a',
-                        'B',
-                        'c',
-                        'D'
-                    ], 'contributed by Jonny Strömberg @javve');
-                naturalSort.insensitive = false;
+                var origArray = [
+                    'c',
+                    'B',
+                    'a',
+                    'D'
+                ];
+                var sortArray = [
+                    'a',
+                    'B',
+                    'c',
+                    'D'
+                ];
+                deepEqual($.extend([], origArray).sort(naturalSort({ insensitive: true })), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
             });
             test("desc sorting", function () {
                 naturalSort.desc = true;
-                wrapTest([
-                        'c',
-                        'B',
-                        'a',
-                        'D'
-                    ], [
-                        'c',
-                        'a',
-                        'D',
-                        'B'
-                    ], 'contributed by Jonny Strömberg @javve');
-                naturalSort.insensitive = true;
-                wrapTest([
-                        'c',
-                        'B',
-                        'a',
-                        'D'
-                    ], [
-                        'D',
-                        'c',
-                        'B',
-                        'a'
-                    ], 'contributed by Jonny Strömberg @javve');
-                naturalSort.insensitive = false;
-                naturalSort.desc = false;
+                var origArray = [
+                    'c',
+                    'B',
+                    'a',
+                    'D'
+                ];
+                var sortArray = [
+                    'c',
+                    'a',
+                    'D',
+                    'B'
+                ];
+                deepEqual($.extend([], origArray).sort(naturalSort({ desc: true })), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
+
+                var origArray = [
+                    'c',
+                    'B',
+                    'a',
+                    'D'
+                ];
+                var sortArray = [
+                    'D',
+                    'c',
+                    'B',
+                    'a'
+                ];
+                deepEqual($.extend([], origArray).sort(naturalSort({ desc: true, insensitive: true })), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
             });
         });
         function wrapTest(origArray, sortArray, message) {

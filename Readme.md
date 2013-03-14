@@ -1,8 +1,6 @@
 ![web component logo](http://i49.tinypic.com/e7nj9v.png)
 
-# naturalSort
-
-Natural sort algorithm with unicode support.
+# Natural sort algorithm with unicode support
 
 The algorithm is written by [Jim Palmer](http://www.linkedin.com/in/jimbob)
 and found at [http://www.overset.com/2008/09/01/javascript-natural-sort-algorithm/](http://www.overset.com/2008/09/01/javascript-natural-sort-algorithm/).

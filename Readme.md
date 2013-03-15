@@ -20,9 +20,25 @@ var values = ['B', 'a', 'D', 'c'];
 
 values.sort(naturalSort); // ['B', 'D', 'a', 'c']
 
-values.sort(naturalSort({ insensitive: true })); // ['a', 'B', 'c', 'D']
+values.sort(function(a, b) {
+    return naturalSort(a, b, { insensitive: true });
+}); // ['a', 'B', 'c', 'D']
 
-values.sort(naturalSort({ insensitive: true, desc: true })); // ['D', 'c', 'B', 'a']
+values.sort(function(a, b) {
+    return naturalSort(a, b, { insensitive: true, desc: true })
+}); // ['D', 'c', 'B', 'a']
+
+
+var values = [
+    { val: 'B' },
+    { val: 'a' },
+    { val: 'D' },
+    { val: 'c' }
+];
+
+values.sort(function(a, b) {
+    return naturalSort(a.val, b.val, { insensitive: true });
+}); // ['a', 'B', 'c', 'D']
 
 ```
 

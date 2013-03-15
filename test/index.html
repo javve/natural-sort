@@ -339,10 +339,11 @@
                     'c',
                     'D'
                 ];
-                deepEqual($.extend([], origArray).sort(naturalSort({ insensitive: true })), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
+                deepEqual($.extend([], origArray).sort(function(a,b) {
+                    return naturalSort(a, b, { insensitive: true });
+                }), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
             });
             test("desc sorting", function () {
-                naturalSort.desc = true;
                 var origArray = [
                     'c',
                     'B',
@@ -355,7 +356,9 @@
                     'D',
                     'B'
                 ];
-                deepEqual($.extend([], origArray).sort(naturalSort({ desc: true })), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
+                deepEqual($.extend([], origArray).sort(function(a,b) {
+                    return naturalSort(a,b, { desc: true });
+                }), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
 
                 var origArray = [
                     'c',
@@ -369,7 +372,26 @@
                     'B',
                     'a'
                 ];
-                deepEqual($.extend([], origArray).sort(naturalSort({ desc: true, insensitive: true })), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
+                deepEqual($.extend([], origArray).sort(function(a, b) {
+                    return naturalSort(a, b, { desc: true, insensitive: true });
+                }), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
+            });
+            test("objects with attributes", function () {
+                var origArray = [
+                    { val: 'c' },
+                    { val: 'B' },
+                    { val: 'a' },
+                    { val: 'D' }
+                ];
+                var sortArray = [
+                    { val: 'a' },
+                    { val: 'B' },
+                    { val: 'c' },
+                    { val: 'D' }
+                ];
+                deepEqual($.extend([], origArray).sort(function(a, b) {
+                    return naturalSort(a.val, b.val, { insensitive: true });
+                }), sortArray, ('contributed by Jonny Strömberg @javve') + QUnit.jsDump.parse(origArray));
             });
         });
         function wrapTest(origArray, sortArray, message) {

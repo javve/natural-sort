@@ -18,7 +18,7 @@ module.exports = function(a, b, options) {
     xN = x.replace(re, '\0$1\0').replace(/\0$/,'').replace(/^\0/,'').split('\0'),
     yN = y.replace(re, '\0$1\0').replace(/\0$/,'').replace(/^\0/,'').split('\0'),
     // numeric, hex or date detection
-    xD = parseInt(x.match(hre)) || (xN.length != 1 && x.match(dre) && Date.parse(x)),
+    xD = parseInt(x.match(hre)) || (xN.length !== 1 && x.match(dre) && Date.parse(x)),
     yD = parseInt(y.match(hre)) || xD && y.match(dre) && Date.parse(y) || null,
     oFxNcL, oFyNcL,
     mult = options.desc ? -1 : 1;

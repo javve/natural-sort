@@ -1,12 +1,11 @@
 {
   "name": "natural-sort",
-  "repo": "javve/natural-sort",
+  "repo": "ashfordl/natural-sort",
   "description": "Natural sort algorithm with unicode support",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": ["natural sort", "sort", "unicode", "dates"],
   "scripts": [
     "index.js"
   ],
-  "twitter": "@javve",
   "license": "MIT"
 }
